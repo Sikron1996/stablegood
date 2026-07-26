@@ -66,8 +66,7 @@ async function loadMine(){
       if(thisRun!==runId) return;
       grid.appendChild(nftCard(m));
     }catch{
-      const placeholder={id:tokenId,name:`Stable Good #${tokenId}`,image:'',imageUrls:[]};
-      grid.appendChild(nftCard(placeholder));
+      grid.appendChild(nftCard({id:tokenId,name:`Stable Good #${tokenId}`}));
     }
   }
 }

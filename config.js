@@ -11,6 +11,7 @@ export const CONFIG = {
   },
   maxSupply: 10000,
   discountedPerWallet: 10,
-  metadataBaseUrl: "https://bafybeiamrl7y7jczjvkbauv4aui2mlgwrzwl25us5a4egxnu5fnsf63rmm.ipfs.inbrowser.link/",
+  metadataBaseUrl: "https://gateway.pinata.cloud/ipfs/bafybeiamrl7y7jczjvkbauv4aui2mlgwrzwl25us5a4egxnu5fnsf63rmm/",
+  imageBaseUrl: "https://gateway.pinata.cloud/ipfs/QmUXNYi5onWMixkEWnfdaoFB68DnfsMHJ25Fbrqc7HjYsf/",
   collectionName: "Stable Good"
 };
