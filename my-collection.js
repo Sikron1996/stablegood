@@ -1,14 +1,80 @@
-import { Contract, id, zeroPadValue } from 'ethers'; import { CONFIG } from './config.js'; import { ABI } from './abi.js';
-import { initNav, rpc, metadata, nftCard } from './shared.js'; import { getAddress, openWallet, onWalletChange } from './wallet.js';
-const grid=document.getElementById('myGrid'), state=document.getElementById('myState');
+import { Contract } from 'ethers';
+import { CONFIG } from './config.js';
+import { ABI } from './abi.js';
+import { initNav, rpc, metadata, nftCard } from './shared.js';
+import { getAddress, openWallet, onWalletChange } from './wallet.js';
+
+const grid=document.getElementById('myGrid');
+const state=document.getElementById('myState');
+let runId=0;
+
 async function loadMine(){
- grid.innerHTML=''; let a=getAddress(); if(!a){state.innerHTML='Connect your wallet to load NFTs you currently own.';document.getElementById('connectMine').style.display='inline-flex';return}
- document.getElementById('connectMine').style.display='none'; state.textContent='Scanning ownership history…';
- const c=new Contract(CONFIG.contractAddress,ABI,rpc); const topic=id('Transfer(address,address,uint256)');
- let logs=[]; try{logs=await rpc.getLogs({address:CONFIG.contractAddress,fromBlock:0,toBlock:'latest',topics:[topic,null,zeroPadValue(a,32)]})}catch(e){state.textContent='The RPC could not scan the full history. Try again shortly.';return}
- const ids=[...new Set(logs.map(l=>Number(BigInt(l.topics[3]))))]; const owned=[];
- for(const tokenId of ids){try{if((await c.ownerOf(tokenId)).toLowerCase()===a.toLowerCase()) owned.push(tokenId)}catch{}}
- state.textContent=owned.length?`${owned.length} NFT${owned.length>1?'s':''} owned`:'No Stable Good NFTs found in this wallet.';
- const ms=await Promise.all(owned.map(async tokenId=>{try{return await metadata(tokenId)}catch{return null}}));ms.filter(Boolean).forEach(m=>grid.appendChild(nftCard(m)));
+  const thisRun=++runId;
+  grid.innerHTML='';
+  const address=getAddress();
+
+  if(!address){
+    state.textContent='Connect your wallet to load NFTs you currently own.';
+    document.getElementById('connectMine').style.display='inline-flex';
+    return;
+  }
+
+  document.getElementById('connectMine').style.display='none';
+  const c=new Contract(CONFIG.contractAddress, ABI, rpc);
+
+  let balance=0;
+  let total=0;
+  try{
+    [balance,total]=await Promise.all([
+      c.balanceOf(address).then(Number),
+      c.totalMinted().then(Number)
+    ]);
+  }catch(e){
+    state.textContent='Could not read the collection from Stable Mainnet. Please try again.';
+    return;
+  }
+
+  if(thisRun!==runId) return;
+  if(balance===0){
+    state.textContent='No Stable Good NFTs found in this wallet.';
+    return;
+  }
+
+  state.textContent=`Finding your ${balance} NFT${balance===1?'':'s'}…`;
+  const owned=[];
+  const wallet=address.toLowerCase();
+  const concurrency=20;
+
+  for(let start=1; start<=total && owned.length<balance; start+=concurrency){
+    if(thisRun!==runId) return;
+    const end=Math.min(total,start+concurrency-1);
+    const ids=Array.from({length:end-start+1},(_,i)=>start+i);
+    const owners=await Promise.all(ids.map(async tokenId=>{
+      try{return {tokenId,owner:(await c.ownerOf(tokenId)).toLowerCase()}}
+      catch{return null}
+    }));
+    owners.forEach(item=>{if(item?.owner===wallet) owned.push(item.tokenId)});
+    state.textContent=`Finding your NFTs… scanned ${end} of ${total}`;
+  }
+
+  if(thisRun!==runId) return;
+  state.textContent=`${owned.length} NFT${owned.length===1?'':'s'} owned`;
+
+  for(const tokenId of owned){
+    try{
+      const m=await metadata(tokenId);
+      if(thisRun!==runId) return;
+      grid.appendChild(nftCard(m));
+    }catch{
+      const placeholder={id:tokenId,name:`Stable Good #${tokenId}`,image:'',imageUrls:[]};
+      grid.appendChild(nftCard(placeholder));
+    }
+  }
 }
-document.addEventListener('DOMContentLoaded',()=>{initNav();document.getElementById('connectMine').onclick=openWallet;onWalletChange(loadMine);loadMine()});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  initNav();
+  document.getElementById('connectMine').onclick=openWallet;
+  onWalletChange(loadMine);
+  loadMine();
+});

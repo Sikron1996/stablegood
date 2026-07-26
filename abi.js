@@ -6,5 +6,6 @@ export const ABI = [
   "function mint(uint256) payable",
   "function tokenURI(uint256) view returns (string)",
   "function ownerOf(uint256) view returns (address)",
+  "function balanceOf(address) view returns (uint256)",
   "event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)"
 ];
