@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reown/appkit": "1.8.20",
-    "@reown/appkit-adapter-ethers": "1.8.20",
-    "ethers": "^6.13.5"
+    "ethers": "^6.13.5",
+    "react": "latest",
+    "react-dom": "latest",
+    "@reown/appkit": "latest",
+    "@reown/appkit-adapter-ethers": "latest"
   },
   "devDependencies": {
-    "vite": "7.0.6"
+    "vite": "latest"
   }
 }

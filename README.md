@@ -25,3 +25,6 @@ Upload the folder to GitHub, then import it into Vercel. Build command: `npm run
 
 ## Reown fix
 Both `@reown/appkit` and `@reown/appkit-adapter-ethers` are pinned to `1.8.20` to prevent the empty Connect Wallet modal caused by package-version mismatch.
+
+## Wallet connection fix
+The wallet module now uses the same Reown/AppKit network definition, initialization pattern, and WalletConnect Project ID as the working Stable Punks repository. The Stable Good contract remains `0xe5870CAadd0C0d0F841f45E8c5a173acF938E2D1`.
