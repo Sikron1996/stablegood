@@ -19,6 +19,7 @@
 <section class="container page-hero"><div class="kicker">On-chain collection</div><h1 class="page-title">Gallery</h1><p class="hero-copy">Explore the minted Stable Good collection. Metadata is loaded from the contract and IPFS.</p></section>
 <section class="container section" style="padding-top:10px">
   <div class="toolbar"><div><strong><span data-total>—</span> minted</strong><div id="galleryStatus" style="color:var(--muted);margin-top:5px">Preparing gallery…</div></div><a class="ghost-btn" href="/">Mint Stable Good</a></div>
+  <div class="filter-bar"><input class="input" id="gallerySearch" placeholder="Search ID, name or trait"><select class="input" id="rarityFilter"><option value="all">All rarity</option><option value="Legendary">Legendary</option><option value="Epic">Epic</option><option value="Rare">Rare</option><option value="Common">Common</option></select></div>
   <div class="gallery-grid" id="galleryGrid"></div>
   <div style="display:grid;place-items:center;margin-top:28px"><button class="primary-btn" id="loadMore">Load more</button></div>
 </section>
