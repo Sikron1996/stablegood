@@ -21,3 +21,7 @@ npm run dev
 
 ## Deploy to Vercel
 Upload the folder to GitHub, then import it into Vercel. Build command: `npm run build`; output folder: `dist`.
+
+
+## Reown fix
+Both `@reown/appkit` and `@reown/appkit-adapter-ethers` are pinned to `1.8.20` to prevent the empty Connect Wallet modal caused by package-version mismatch.
