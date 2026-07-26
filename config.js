@@ -1,6 +1,6 @@
 export const CONFIG = {
   contractAddress: "0xe5870CAadd0C0d0F841f45E8c5a173acF938E2D1",
-  reownProjectId: "4f71172824a0ea69b0270161482356fe",
+  reownProjectId: "5bffee351a1496367a1567036986e0be",
   chain: {
     chainId: 988,
     idHex: "0x3dc",
