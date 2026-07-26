@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020713">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<title>Stable Good — Mint</title>
+<meta name="description" content="Mint Stable Good on Stable Mainnet. First 10 NFTs per wallet at 0.02 USDT0 each.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner">
+  <a class="brand" href="/"><span class="brand-mark"></span>STABLE GOOD</a>
+  <div class="nav-links"><a class="active" href="/">Mint</a><a href="/gallery/">Gallery</a><a href="/my-collection/">My Collection</a><a href="/marketplace/">Marketplace</a></div>
+  <button class="wallet-btn" data-wallet>Connect Wallet</button>
+</div></nav>
+
+<main>
+<section class="container hero">
+  <div>
+    <div class="kicker">Built on Stable Mainnet</div>
+    <h1>STABLE<br><span class="gradient-text">GOOD</span></h1>
+    <p class="hero-copy">10,000 expressive collectibles built for the Stable ecosystem. Every wallet gets its own early mint allocation: the first 10 NFTs cost 0.02 USDT0 each.</p>
+    <div class="hero-actions">
+      <a class="primary-btn" href="#mint">Mint now</a>
+      <a class="ghost-btn" href="/gallery/">Explore gallery</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong><span data-supply>—</span> / 10,000</strong><span>Minted</span></div>
+      <div class="stat"><strong>0.02 USDT0</strong><span>First 10 / wallet</span></div>
+      <div class="stat"><strong>0.1 USDT0</strong><span>After 10</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div></div>
+  </div>
+  <div class="showcase">
+    <div class="glow"></div>
+    <div class="showcase-card main"><img src="assets/images/stable-good-04.png" alt="Stable Good NFT"></div>
+    <div class="showcase-card small-a"><img src="assets/images/stable-good-05.png" alt="Stable Good NFT"></div>
+    <div class="showcase-card small-b"><img src="assets/images/stable-good-09.png" alt="Stable Good NFT"></div>
+  </div>
+</section>
+
+<section class="section" id="mint"><div class="container">
+  <div class="section-head"><div><div class="kicker">Mint live</div><h2>Secure your Stable Good</h2></div></div>
+  <div class="mint-layout">
+    <div class="card mint-card">
+      <div class="price-grid">
+        <div class="price-box"><small>First 10 per wallet</small><strong>0.02 USDT0</strong></div>
+        <div class="price-box"><small>Every mint after</small><strong>0.1 USDT0</strong></div>
+      </div>
+      <div class="qty-row">
+        <span>Quantity</span>
+        <div class="qty-controls"><button class="qty-btn" id="minus">−</button><span class="qty-value" id="qtyValue">1</span><button class="qty-btn" id="plus">+</button></div>
+      </div>
+      <div class="total-row"><span>Total</span><strong id="totalPrice">0.02 USDT0</strong></div>
+      <div style="color:var(--muted);margin:-10px 0 18px" id="priceNote">Connect your wallet for a personalized quote</div>
+      <button class="primary-btn full" id="mintBtn">Mint Stable Good</button>
+      <div class="status" id="status">Ready to connect.</div>
+    </div>
+    <div class="info-grid">
+      <div class="card info-card"><h3>Your mint count</h3><p>You have minted <strong id="walletMinted">0</strong> Stable Good NFTs with the connected wallet.</p></div>
+      <div class="card info-card"><h3>Wallet-based pricing</h3><p>Every wallet independently receives 10 discounted mints before the regular price activates.</p></div>
+      <div class="card info-card"><h3>Stable Mainnet</h3><p>Chain ID 988. Mint directly with the network’s native USDT0 balance.</p></div>
+      <div class="card info-card"><h3>No wallet limit</h3><p>Mint as many NFTs as you want while supply remains available.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head"><div><div class="kicker">Collection preview</div><h2>Meet the Goods</h2></div><a class="ghost-btn" href="/gallery/">View all</a></div>
+  <div class="preview-grid"><article class="nft-card"><img loading="lazy" src="assets/images/stable-good-01.jpeg" alt="Stable Good artwork"><div class="label">Stable Good preview</div></article>
+<article class="nft-card"><img loading="lazy" src="assets/images/stable-good-02.jpeg" alt="Stable Good artwork"><div class="label">Stable Good preview</div></article>
+<article class="nft-card"><img loading="lazy" src="assets/images/stable-good-03.png" alt="Stable Good artwork"><div class="label">Stable Good preview</div></article>
+<article class="nft-card"><img loading="lazy" src="assets/images/stable-good-04.png" alt="Stable Good artwork"><div class="label">Stable Good preview</div></article>
+<article class="nft-card"><img loading="lazy" src="assets/images/stable-good-05.png" alt="Stable Good artwork"><div class="label">Stable Good preview</div></article></div>
+</div></section>
+</main>
+
+<footer><div class="container footer-inner"><span>© 2026 Stable Good</span><span>Contract: 0xe587…E2D1</span></div></footer>
+<script type="module" src="/app.js"></script>
+</body></html>

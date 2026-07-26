@@ -1,0 +1,23 @@
+# Stable Good — complete website
+
+## Included
+- Reown AppKit / WalletConnect support
+- Injected wallet fallback
+- Exact on-chain mint quote via `mintCost`
+- Animated dark-blue design
+- IPFS gallery
+- My Collection ownership scanner
+- Marketplace Coming Soon
+- Clean URLs without `.html`
+
+## Required once
+Open `config.js` and replace `PASTE_REOWN_PROJECT_ID_HERE` with your Reown AppKit Project ID. The Project ID is required for WalletConnect and the full wallet list. Without it, browser wallets such as MetaMask still work.
+
+## Run
+```bash
+npm install
+npm run dev
+```
+
+## Deploy to Vercel
+Upload the folder to GitHub, then import it into Vercel. Build command: `npm run build`; output folder: `dist`.

@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/gallery",
+      "destination": "/gallery/index.html"
+    },
+    {
+      "source": "/my-collection",
+      "destination": "/my-collection/index.html"
+    },
+    {
+      "source": "/marketplace",
+      "destination": "/marketplace/index.html"
+    }
+  ]
+}
